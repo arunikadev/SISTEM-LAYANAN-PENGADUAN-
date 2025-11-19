@@ -1,0 +1,559 @@
+/* =================================================================
+   1. IMPORTS & VARIABEL ROOT
+   ================================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary-dark: #1B3C53;
+  --primary: #456882;
+  --beige: #D2C1B6;
+  --offwhite: #F9F3EF;
+  --muted: #6b7980;
+  --success: #2e9b4a;
+  --danger: #d9534f;
+  --warning: #f0ad4e;
+  --processing: #f6c85f;
+  --max-width: 1100px;
+  --gutter: 24px;
+}
+
+/* =================================================================
+   2. RESET & GAYA DASAR
+   ================================================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+html {
+  font-size: 20px; 
+}
+
+body {
+  background: var(--offwhite);
+  color: var(--primary-dark);
+  font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  max-width: 95%;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+/* =================================================================
+   3. ANIMASI
+   ================================================================= */
+@keyframes fadeInUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); }
+}
+
+@keyframes float {
+  0% { 
+    transform: translateY(0) translateX(-10px); }
+  50% { 
+    transform: translateY(-10px) translateX(0); }
+  100% { 
+    transform: translateY(0) translateX(-10px); }
+}
+
+.header-hero, .cards, .table, .card {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+/* =================================================================
+   4. LAYOUT UTAMA (SPLIT SCREEN, NAVBAR)
+   ================================================================= */
+
+/* --- Layout Split Screen (Login/Register) --- */
+.split { display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  min-height: 100vh; 
+  align-items: center; gap: 0; }
+
+.left-visual {
+  background: linear-gradient(180deg, rgba(27,60,83,1) 0%, rgba(69,104,130,1) 100%);
+  color: white;
+  padding: 48px;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; 
+  gap: 24px;
+}
+
+.left-visual h1 {
+   font-size: 1.875rem; 
+  }
+.left-visual p { 
+  color: rgba(255, 255, 255, 0.92); 
+  max-width: 420px; 
+  line-height: 1.6; }
+
+.left-visual .logo-main {
+  width: 220px; 
+}
+
+/* --- Navbar --- */
+.navbar { 
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 1.5rem; 
+  padding: 0.75rem 0; 
+  background: transparent; }
+
+.nav-left { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; }
+
+.nav-left img { 
+  height: 46px; 
+}
+
+.nav-right { 
+  display: flex; 
+  align-items: center; 
+  gap: 12px; 
+}
+
+.nav-links { 
+  display: flex; 
+  gap: 1rem; 
+  align-items: center; 
+}
+
+.nav-links a { 
+  color: var(--primary-dark); 
+  text-decoration: none; 
+  font-weight: 600; 
+  padding: 0.5rem 0.625rem; 
+  border-radius: 8px; 
+  transition: background-color 0.2s ease; 
+}
+
+.nav-links a:hover { 
+  background: #f3f6f8; 
+}
+
+/* =================================================================
+   5. KOMPONEN UI (CARD, FORM, BUTTON, BADGE)
+   ================================================================= */
+
+/* --- Card & Widget --- */
+.card { 
+  width: 100%; 
+  max-width: 100%; 
+  background: linear-gradient(180deg, #ffffff 0%, #fbfaf8 100%); 
+  padding: 1.75rem; 
+  border-radius: 12px; 
+  box-shadow: 0 8px 30px rgba(11, 20, 30, 0.06); 
+}
+
+.card-full { 
+  max-width: 100%; 
+}
+
+.cards { 
+  display: flex; 
+  gap: 1rem; 
+  margin-top: 1.125rem; 
+}
+
+.card-widget { 
+  flex: 1; 
+  padding: 1.125rem; 
+  border-radius: 12px; 
+  background: linear-gradient(180deg, #fff, #fbfbfb); 
+  box-shadow: 0 8px 20px rgba(11, 20, 30, 0.04); 
+}
+
+/* --- Form --- */
+.brand { 
+  display: flex; 
+  gap: 12px; 
+  align-items: center; 
+  margin-bottom: 10px; 
+}
+
+.brand h2 { 
+  font-size: 1.125rem; 
+  color: var(--primary-dark); 
+}
+
+.form-group { 
+  margin-top: 0.75rem; 
+}
+
+label { 
+  display: block; 
+  font-size: 0.875rem; 
+  color: var(--muted); 
+  margin-bottom: 0.5rem; 
+}
+
+input[type="text"], input[type="email"], input[type="password"], textarea, select { 
+  width: 100%; 
+  padding: 0.75rem 0.875rem; 
+  border-radius: 10px; 
+  border: 1px solid #ececec; 
+  background: white; 
+  font-size: 0.9rem; 
+  outline: none; 
+  transition: all .18s ease; 
+}
+
+input:focus, textarea:focus, select:focus { 
+  box-shadow: 0 10px 28px rgba(69, 104, 130, 0.08); 
+  border-color: var(--primary); 
+  transform: translateY(-1px); 
+}
+
+/* --- Button --- */
+.btn { 
+  display: inline-block; 
+  padding: 0.75rem 1.125rem; 
+  border-radius: 10px; 
+  background: var(--primary); 
+  color: white; 
+  border: none; 
+  cursor: pointer; 
+  font-weight: 600; 
+  margin-top: 0.875rem; 
+  transition: all .12s ease; 
+}
+
+.btn:hover { 
+  transform: translateY(-3px); 
+  box-shadow: 0 12px 30px rgba(69, 104, 130, 0.12); 
+}
+
+.btn.secondary { 
+  background: transparent; 
+  color: var(--primary); 
+  border: 1px solid rgba(69, 104, 130, 0.12); 
+}
+
+/* --- Badge --- */
+.badge { 
+  padding: 6px 10px;
+  border-radius: 999px; 
+  font-size: 0.8rem; 
+  font-weight: 600; 
+  display: inline-block; 
+}
+
+.badge.done { 
+  background: var(--success); 
+  color: rgb(0, 0, 0); 
+}
+
+.badge.danger { 
+  background: var(--danger); 
+  color: rgb(0, 0, 0); 
+}
+
+.badge.pending { 
+  background: var(--warning); 
+  color: var(--primary-dark); 
+}
+
+.badge.processing { 
+  background: var(--processing); 
+  color: var(--primary-dark); 
+}
+
+/* =================================================================
+   6. KOMPONEN INTERAKTIF (TABLE, MENU, MODAL, TOAST, DROPDOWN)
+   ================================================================= */
+
+/* --- Table --- */
+.table { 
+  width: 100%; 
+  margin-top: 1.5rem; 
+  border-collapse: collapse; 
+}
+
+.table th, .table td { 
+  padding: 0.875rem 1rem; 
+  text-align: left; 
+  border-bottom: 1px solid #f2f2f2; 
+  font-size: 0.9rem; 
+}
+
+.table tbody tr { 
+  transition: transform 0.2s ease, 
+  box-shadow 0.2s ease; 
+}
+
+.table tbody tr:hover { 
+  transform: translateY(-3px); 
+  box-shadow: 0 8px 20px rgba(11, 20, 30, 0.05); 
+}
+
+/* --- Hamburger Menu & Overlay --- */
+.hamburger { 
+  display: none; 
+  width: 44px; 
+  height: 44px; 
+  border-radius: 10px; 
+  background: transparent; 
+  border: none; 
+  align-items: center; 
+  justify-content: center; 
+  cursor: pointer; 
+}
+
+.menu-overlay { 
+  position: fixed; 
+  inset: 0; 
+  z-index: 90; 
+  display: none; 
+  background: rgba(11, 20, 30, 0.06); 
+  backdrop-filter: blur(2px); 
+}
+
+.menu-panel {
+  position: fixed;
+  top: 0;
+  right: -380px;
+  width: 320px;
+  height: 100vh;
+  background: var(--offwhite);
+  box-shadow: -12px 0 30px rgba(11, 20, 30, 0.06);
+  transition: right .32s cubic-bezier(.2, .9, .2, 1);
+  z-index: 100;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.menu-panel.open {
+  right: 0;
+}
+
+.menu-panel .menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.menu-panel .menu-links a {
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: var(--primary-dark);
+  font-weight: 600;
+}
+
+.menu-panel .menu-links a:hover {
+  background: #f3f6f8;
+}
+
+.menu-close {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: var(--muted);
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+/* --- Modal --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(11, 20, 30, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  background: white;
+  padding: 24px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 10px 40px rgba(11, 20, 30, 0.1);
+  animation: slideIn 0.3s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+/* --- Toast Notification --- */
+.toast {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--primary-dark);
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(11, 20, 30, 0.15);
+  transition: bottom 0.5s cubic-bezier(.2, .9, .2, 1);
+  z-index: 300;
+}
+
+.toast.show {
+  bottom: 30px;
+}
+
+/* --- Profile Dropdown --- */
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-dropdown .avatar {
+  cursor: pointer;
+  border: none;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), #5b86a0);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(11, 20, 30, 0.1);
+  min-width: 180px;
+  z-index: 100;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity .2s ease, transform .2s ease;
+  pointer-events: none;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-menu a {
+  padding: 12px 16px;
+  color: var(--primary-dark);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f3f6f8;
+}
+
+/* --- Tabs (Admin) & Inline Edit --- */
+.tabs .tab-button {
+  padding: 10px 18px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--muted);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  transition: all .2s ease;
+  font-size: 1rem;
+}
+
+.tabs .tab-button.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.edit-panel-row td {
+  padding: 24px !important;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid var(--primary);
+}
+/* =================================================================
+   7. RESPONSIVE MEDIA QUERIES
+   ================================================================= */
+
+@media (max-width: 1200px) {
+  .container { max-width: 95%; padding: 20px; }
+}
+
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .left-visual { padding: 28px; order: 2; min-height: 40vh; }
+  .right-form { padding: 28px; order: 1; }
+  .illust { max-width: 320px; }
+  .hamburger { display: flex; }
+  .nav-links { display: none; }
+}
+
+@media (max-width: 600px) {
+  html { font-size: 14px; }
+  h1 { font-size: 1.5rem; }
+  .card { padding: 1rem; }
+  .navbar { flex-direction: row; gap: 12px; }
+  .cards { flex-direction: column; }
+  .table { display: block; overflow-x: auto; white-space: nowrap; }
+  .menu-panel { width: 80vw; right: -80vw; }
+  .menu-panel.open { right: 0; }
+}
+
+/* =================================================================
+   8. KELAS BANTUAN (HELPERS)
+   ================================================================= */
+.text-muted { 
+  color: var(--muted); 
+}
+
+.center { 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.small { 
+  font-size: 0.875rem; 
+  color: var(--muted); 
+  margin-top: 0.625rem; 
+}
